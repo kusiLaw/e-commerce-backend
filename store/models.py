@@ -6,9 +6,14 @@ from custom_users.models import User
 # Create your models here.
 
 
-class Color:
+class Color(models.Model):
     name = models.CharField(max_length=15,  unique=True)
     code = models.CharField(max_length=15, unique=True)
+
+class Size(models.Model):
+    text = models.CharField(max_length=15,  unique=True)
+    unit = models.CharField(max_lenth=15, null=True, blank=True,
+                            help_text='Handle at frontend since unit is not known ahead of time')
 
 
 class Product(models.Model):
@@ -22,6 +27,7 @@ class Product(models.Model):
     cost_price = models.DecimalField(_("cp"), max_digits=5, decimal_places=2, blank=False, null=False)
     saling_price = models.DecimalField(_("sp"), max_digits=5, decimal_places=2, blank=False, null=False)
     color = models.ManyToManyField(Color)
+    size = models.ManyToManyField(Size)
     class Meta:
         verbose_name = _("product")
         verbose_name_plural = _("products")
