@@ -10,7 +10,11 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["name"]),
+        ]
 
 class ProductColor(models.Model):
     name = models.CharField(max_length=15,  unique=True)
@@ -36,7 +40,7 @@ class Product(models.Model):
         ("sales", "sales"),
         ("default", "default"),
     ]
-    
+
     name = models.CharField(max_length=120, blank=False, unique=True)
     product_code = models.CharField(max_length=100, blank=True, null=True)
     description = models.CharField(max_length=255, blank=False , null=False)
