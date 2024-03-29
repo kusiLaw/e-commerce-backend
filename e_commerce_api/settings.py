@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'custom_users',
+    'store',
     'rest_framework',
     'djoser'
 ]
@@ -155,6 +156,17 @@ REST_FRAMEWORK = {
     ]
 }
 
+
+#AWS EMAIL SETTINGS
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
+AWS_SES_ACCESS_KEY_ID = getenv('YOUR-ACCESS-KEY-ID')
+AWS_SES_SECRET_ACCESS_KEY = getenv('YOUR-SECRET-ACCESS-KEY')
+AWS_SES_FROM_EMAIL = getenv('AWS_SES_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = getenv('AWS_SES_FROM_EMAIL') #key use by Djoser
+USE_SES_V2 = True
+AWS_SES_REGION_NAME = getenv('AWS_SES_REGION_NAME')   # can remove if default to us-east-1
+AWS_SES_REGION_ENDPOINT = f'email.{AWS_SES_REGION_NAME}.amazonaws.com'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
