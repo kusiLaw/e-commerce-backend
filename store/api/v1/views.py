@@ -10,3 +10,7 @@ class ProductList(generics.ListAPIView):
     serializer_class = ProductListSerializer
 
 
+class ProductDetail(generics.RetrieveAPIView):
+    queryset = Product.objects.prefetch_related(
+        'color', 'size', 'product_image')
+    serializer_class = ProductDetailSerializer
