@@ -17,20 +17,20 @@ class Category(models.Model):
         ]
 
 class ProductColor(models.Model):
-    name = models.CharField(max_length=15,  unique=True)
-    code = models.CharField(max_length=15, unique=True)
+    color = models.CharField(max_length=15,  unique=True)
+    color_code = models.CharField(max_length=15, unique=True)
 
     def __str__(self) -> str:
-        return self.name
+        return self.color
     
 
 class ProductSize(models.Model):
-    text = models.CharField(max_length=15,  unique=True)
+    size = models.CharField(max_length=15,  unique=True)
     unit = models.CharField(max_length=15, null=True, blank=True,
                             help_text='Handle at frontend since unit is not known ahead of time')
 
     def __str__(self) -> str:
-        return self.text
+        return self.size
 
 
 class Product(models.Model):
@@ -48,8 +48,8 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     quantity= models.PositiveIntegerField()
     tag = models.CharField(max_length=7, choices=Tag, default='default')
-    cost_price = models.DecimalField(_("cp"), max_digits=5, decimal_places=2, blank=False, null=False)
-    price = models.DecimalField(_("saling_price"),  max_digits=5, decimal_places=2, blank=False, null=False)
+    cost_price = models.DecimalField(_("cp"), max_digits=8, decimal_places=2, blank=False, null=False)
+    price = models.DecimalField(_("saling_price"),  max_digits=8, decimal_places=2, blank=False, null=False)
     color = models.ManyToManyField(ProductColor)
     size = models.ManyToManyField(ProductSize)
     user = models.ForeignKey(User, verbose_name=_(
@@ -70,12 +70,12 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    image = image = models.ImageField(
-        max_length=100, upload_to='store/static/')
+    image = models.ImageField(max_length=255, upload_to='store/static/')
     product = models.ForeignKey(Product, related_name='product_image', on_delete=models.CASCADE)
 
 
-
+    def __str__(self) -> str:
+        return str(self.image)
 
         
 

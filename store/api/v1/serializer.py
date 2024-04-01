@@ -13,14 +13,14 @@ class ProductSizesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductSize
-        fields = ['text', 'unit']
+        fields = ['size', 'unit']
 
 
 class ProductColorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProductColor
-        fields = ['name', 'code']
+        fields = ['color', 'color_code']
 
 
 class ProductListSerializer(serializers.ModelSerializer):
@@ -38,7 +38,7 @@ class ProductListSerializer(serializers.ModelSerializer):
         model = Product
         fields = [ 'id', 'url','name', 'product_code',
                   'description', 
-                  'tag', 'saling_price', 'color', 'product_image']
+                  'tag', 'price', 'color', 'product_image']
         # depth = 2
       
 
@@ -54,4 +54,4 @@ class ProductDetailSerializer(serializers.HyperlinkedModelSerializer):
         model = Product
         fields = ['id', 'url', 'name', 'product_code',
                   'description', 'created_at', 'quantity',
-                  'tag', 'saling_price', 'color', 'size', 'product_image']
+                  'tag', 'price', 'color', 'size', 'product_image']
