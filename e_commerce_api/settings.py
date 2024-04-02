@@ -48,11 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-  
     'custom_users',
     'store',
     'rest_framework',
-    "corsheaders",
+    'corsheaders',
+    'django_filters',
     'djoser'
 ]
 
@@ -156,7 +156,10 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE' : 20
+    
 }
 
 
@@ -164,6 +167,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "http://127.0.0.1",
 ]
+
+
 
 #AWS EMAIL SETTINGS
 EMAIL_BACKEND = 'django_ses.SESBackend'
@@ -175,6 +180,14 @@ DEFAULT_FROM_EMAIL = getenv('AWS_SES_FROM_EMAIL') #key use by Djoser
 USE_SES_V2 = True
 AWS_SES_REGION_NAME = getenv('AWS_SES_REGION_NAME')   # can remove if default to us-east-1
 AWS_SES_REGION_ENDPOINT = f'email.{AWS_SES_REGION_NAME}.amazonaws.com'
+
+#BRAINTREE SETTINGS FOR PAYMENT
+BRAINTREE_MERCHANT_ID = getenv('BRAINTREE_MERCHANT_ID')
+BRAINTREE_PUBLIC_KEY = getenv('BRAINTREE_PUBLIC_KEY')
+BRAINTREE_PRIVATE_KEY = getenv('BRAINTREE_PRIVATE_KEY')
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
