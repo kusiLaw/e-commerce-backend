@@ -2,7 +2,7 @@ from django.conf import settings
 import braintree
 
 gateway = braintree.BraintreeGateway(
-    braintree.configuration(
+   braintree.Configuration(
         braintree.Environment.Sandbox,
         merchant_id=settings.BRAINTREE_MERCHANT_ID,
         public_key=settings.BRAINTREE_PUBLIC_KEY,

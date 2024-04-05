@@ -21,11 +21,13 @@ class User(AbstractUser):
                               )
    
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
-    objects = CustomUserManager()
     is_active = models.BooleanField(default=False)
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
+
+
+    objects = CustomUserManager()
 
     class Meta: 
       ordering = ['-date_joined',]

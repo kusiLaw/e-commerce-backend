@@ -15,16 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from rest_framework.urlpatterns import format_suffix_patterns
-
+from django.urls import path, re_path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('api/v1/', include('store.api.v1.urls')),
-    path('admin/', admin.site.urls),   
-]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-#accept api format
-urlpatterns = format_suffix_patterns(urlpatterns)
+    path('api/auth/', include('custom_users.urls')),
+    path('api/v1/', include('store.api.v1.urls')),
+    path('admin/', admin.site.urls), 
+   ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
