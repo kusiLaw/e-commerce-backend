@@ -159,7 +159,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'password-reset-confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activation/{uid}/{token}',
-    # 'SEND_ACTIVATION_EMAIL': True,
+    'SEND_ACTIVATION_EMAIL': True,
     'USER_CREATE_PASSWORD_RETYPE' : True,
     'PASSWORD_RESET_CONFIRM_RETYPE' :True,
     'TOKEN_MODEL': None   
@@ -179,38 +179,37 @@ REST_FRAMEWORK = {
 }
 
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost',
-    'http://127.0.0.1', 'http://vercel.app'
-]
+CORS_ALLOWED_ORIGINS = getenv('CORS_ALLOWED_ORIGINS', 'http://localhost,http://127.0.0.1,http://vercel.app'.split(','))
+CORS_ALLOWED_CREDENTIALS = True
 
 
-
-# EMAIL_BACKEND = 'django_ses.SESBackend'
+#EMAIL SEETHINGS
+EMAIL_BACKEND = 'django_ses.SESBackend'
 DEFAULT_FROM_EMAIL = getenv('DEFAULT_FROM_EMAIL')  # key use by Djoser
 
-
 # AWS EMAIL SETTINGS
-AWS_SES_ACCESS_KEY_ID = getenv('YOUR-ACCESS-KEY-ID')
-AWS_SES_SECRET_ACCESS_KEY = getenv('YOUR-SECRET-ACCESS-KEY')
+AWS_SES_ACCESS_KEY_ID = getenv('AWS_SES_ACCESS_KEY_ID')
+AWS_SES_SECRET_ACCESS_KEY = getenv('AWS_SES_SECRET_ACCESS_KEY')
 AWS_SES_FROM_EMAIL = getenv('DEFAULT_FROM_EMAIL')
 USE_SES_V2 = True
 AWS_SES_REGION_NAME = getenv('AWS_SES_REGION_NAME')   # can remove if default to us-east-1
 AWS_SES_REGION_ENDPOINT = f'email.{AWS_SES_REGION_NAME}.amazonaws.com'
 
+DOMAIN=getenv('DOMAIN')
+SITE_NAME=getenv('SITE_NAME')
+
+
+# SENDGRID EMAIL SETTINGS (Alternative email)
+# SENDGRID_API_KEY = getenv('SENDGRID_API_KEY')
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+
 #BRAINTREE SETTINGS FOR PAYMENT
 BRAINTREE_MERCHANT_ID = getenv('BRAINTREE_MERCHANT_ID')
 BRAINTREE_PUBLIC_KEY = getenv('BRAINTREE_PUBLIC_KEY')
 BRAINTREE_PRIVATE_KEY = getenv('BRAINTREE_PRIVATE_KEY')
-
-#SENDGRID EMAIL SETTINGS
-SENDGRID_API_KEY = getenv('SENDGRID_API_KEY')
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-
-
 
 
 
