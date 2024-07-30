@@ -156,6 +156,15 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+#custom cookie settings
+AUTH_COOKIE = 'access'
+AUTH_COOKIES_ACCESS_MAX_AGE = 60 * 5 
+AUTH_COOKIES_REFRESH_MAX_AGE = 60 * 60 * 24 #one day
+AUTH_COOKIES_SECURE = getenv('AUTH_COOKIES_SECURE', 'True') == 'True' #enforce ssl certificate
+AUTH_COOKIES_HTTP_ONLY = True # set httponly to block cookies access by js scripting in the browser 
+AUTH_COOKIES_PATH='/'
+AUTH_COOKIES_SAMESITE ='None'
+
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'password-reset-confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activation/{uid}/{token}',
@@ -168,7 +177,7 @@ DJOSER = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'custom_users.authentication.CustomJWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
