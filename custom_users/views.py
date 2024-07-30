@@ -1,6 +1,9 @@
 from django.conf import settings
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from rest_framework_simplejwt.views import(
-    TokenObtainPairView, TokenRefreshView, TokenVerifyView
+    TokenObtainPairView, TokenRefreshView, TokenVerifyView,
 )
 
 
@@ -79,3 +82,12 @@ class CustomTokenVerifyView(TokenVerifyView):
             request.data['token'] = access_token
         
         return super().post(request, *args, **kwargs)
+
+
+class LogoutView(APIView):
+    def post(self, request, *args, **kwargs):
+        response = Response(status=status.HTTP_204_NO_CONTENT)
+        response.delete_cookies('access')
+        response.delete_cookies('refresh')
+
+        return response
