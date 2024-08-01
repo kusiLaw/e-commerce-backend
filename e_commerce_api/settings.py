@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'django_filters',
+    'social_django'
   
 ]
 
@@ -75,6 +76,13 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'e_commerce_api.urls'
 
 AUTH_USER_MODEL = "custom_users.User"
+
+AUTHENTICATION_BACKENDS =[
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+] 
+
 
 TEMPLATES = [
     {
@@ -165,13 +173,16 @@ AUTH_COOKIES_HTTP_ONLY = True # set httponly to block cookies access by js scrip
 AUTH_COOKIES_PATH='/'
 AUTH_COOKIES_SAMESITE ='None'
 
+
+
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'password-reset-confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activation/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'USER_CREATE_PASSWORD_RETYPE' : True,
     'PASSWORD_RESET_CONFIRM_RETYPE' :True,
-    'TOKEN_MODEL': None   
+    'TOKEN_MODEL': None ,
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS' : getenv('REDIRECT_URLS').split(',')
 }
 
 
@@ -208,11 +219,23 @@ DOMAIN=getenv('DOMAIN')
 SITE_NAME=getenv('SITE_NAME')
 
 
-# SENDGRID EMAIL SETTINGS (Alternative email)
-# SENDGRID_API_KEY = getenv('SENDGRID_API_KEY')
-# EMAIL_HOST = 'smtp.sendgrid.net'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+# SOCIAL AUTH SETTING
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = getenv('GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = getenv('GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'openid'
+]
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA=['first_name', 'last_name']
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = getenv('FACEBOOK_AUTH_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = getenv('FACEBOOK_SECRET_KEY')
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields':'email, first_name, last_name'
+}
 
 
 #BRAINTREE SETTINGS FOR PAYMENT
@@ -226,3 +249,10 @@ BRAINTREE_PRIVATE_KEY = getenv('BRAINTREE_PRIVATE_KEY')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# SENDGRID EMAIL SETTINGS (Alternative email)
+# SENDGRID_API_KEY = getenv('SENDGRID_API_KEY')
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
