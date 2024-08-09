@@ -36,8 +36,9 @@ SECRET_KEY = getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = getenv('DEBUG', 'False')  == 'True'
 
-ALLOWED_HOSTS = getenv(
-    'ALLOWED_HOSTS', '127.0.0.1,localhost, .vercel.app').split(',')
+ALLOWED_HOSTS = ['*']
+#getenv(
+#    'ALLOWED_HOSTS', '127.0.0.1,localhost,').split(',')
 
 # For Vercel setting 
 # must be commentted if not deploy on vercel
@@ -106,24 +107,27 @@ WSGI_APPLICATION = 'e_commerce_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": getenv('DB_NAME'),
-        "USER": getenv('DB_USER'),
-        "PASSWORD": getenv('DB_PASSWORD'),
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+if getenv('PRODUCTION', 'False'):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": getenv('DB_NAME'),
+            "USER": getenv('DB_USER'),
+            "PASSWORD": getenv('DB_PASSWORD'),
+            "HOST": "127.0.0.1",
+            "PORT": "3306",
+        }
+    }
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -161,7 +165,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
-MEDIA_URL = 'media/'
+MEDIA_URL = getenv('MEDIA_URL', 'media/')
 MEDIA_ROOT = BASE_DIR / 'media'
 
 #custom cookie settings
@@ -199,8 +203,11 @@ REST_FRAMEWORK = {
 }
 
 
-CORS_ALLOWED_ORIGINS = getenv('CORS_ALLOWED_ORIGINS', 'http://localhost,http://127.0.0.1,http://vercel.app'.split(','))
-CORS_ALLOWED_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = getenv('CORS_ALLOWED_ORIGINS', 
+                            #   'http://localhost:3000,http://127.0.0.1:3000'.split(','))
+# CORS_ALLOWED_CREDENTIALS = True
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 #EMAIL SEETHINGS
