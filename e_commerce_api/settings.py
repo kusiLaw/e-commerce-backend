@@ -107,19 +107,19 @@ WSGI_APPLICATION = 'e_commerce_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if getenv('PRODUCTION', 'False'):
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": getenv('DB_NAME'),
-            "USER": getenv('DB_USER'),
-            "PASSWORD": getenv('DB_PASSWORD'),
-            "HOST": "127.0.0.1",
-            "PORT": "3306",
-        }
-    }
-else:
-    DATABASES = {
+# if getenv('PRODUCTION', 'False'):
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": getenv('DB_ENGINE'),
+#             "NAME": getenv('DB_NAME'),
+#             "USER": getenv('DB_USER'),
+#             "PASSWORD": getenv('DB_PASSWORD'),
+#             "HOST": getenv('DB_HOST'),
+#             "PORT": getenv('DB_PORT'),
+#         }
+#     }
+# else:
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',

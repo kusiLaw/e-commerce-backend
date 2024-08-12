@@ -1,0 +1,163 @@
+[33mcommit a101fa98ae40862bc7192dc7bcf0347d7f04870d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Wed Jul 31 12:25:17 2024 +0100
+
+    Map jwt urls to custom user views
+
+[33mcommit 763a44137e1422e5f37712b78d411a939d36dbc9[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Tue Jul 30 12:22:18 2024 +0100
+
+    Add logout view
+
+[33mcommit 18e0b54327bcab104a0357d44df0301a637496bd[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Tue Jul 30 11:38:52 2024 +0100
+
+    Overwrite jwt views to implement secure httponly cookies
+
+[33mcommit 278bff0f805260ae5638a602e6e11b4654477cdb[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Mon Jul 29 11:37:00 2024 +0100
+
+    Add full user authentication features
+
+[33mcommit 52ec36da1a65e161e4b9893732c240bee066cb1c[m[33m ([m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Sun Jul 28 23:26:43 2024 +0100
+
+    Add MySql settings to deploy
+
+[33mcommit 99d54fc62afd9c27d9c4f5d7c6fd89a33ca5edde[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/features[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeatures[m[33m)[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Sun Jul 28 20:27:01 2024 +0100
+
+    Ignore __pycache__ directories
+
+[33mcommit 06c8ac1bb4d57362f5ba4951b521986ef99d272f[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Fri Apr 5 18:33:20 2024 +0100
+
+    Add stash file
+
+[33mcommit 1e39e1d6855ce49c77fba065151109fb5960823d[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Fri Apr 5 18:22:03 2024 +0100
+
+    Add temp data
+
+[33mcommit 3d3c78f6e653b694a76f8d5eca879b11175f4274[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Tue Apr 2 22:23:31 2024 +0100
+
+    Add braintree payment gateway settings
+
+[33mcommit c4adaf03723a46046ad7450838f5cf0ea2579fa0[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Mon Apr 1 12:11:50 2024 +0100
+
+    Fix model attribute error
+
+[33mcommit e24b1b733feb0373bc13c04769e642793c4f44f9[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Mon Apr 1 12:06:27 2024 +0100
+
+    Add django cor-headers
+
+[33mcommit 6f96f27bbec92bafbb8421bd18d8cfc1400deefc[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Fri Mar 29 13:07:19 2024 +0000
+
+    Update product url with approprate path
+
+[33mcommit 11673763e246819a60faa4861a2913a16c39a48a[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Fri Mar 29 13:04:45 2024 +0000
+
+    Update api view with product details
+
+[33mcommit e379e49384ea78c5f785a5ea09312af3c3e6c369[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Thu Mar 28 13:03:32 2024 +0000
+
+    Add product list view
+
+[33mcommit 0725b70c78751ae12bc7846ec19b0990600595a2[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Thu Mar 28 12:52:12 2024 +0000
+
+    Add models serializer
+
+[33mcommit 1501d91eaa131d364ab6e37fc26822dcce3982c8[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Thu Mar 28 12:45:04 2024 +0000
+
+    Add category to admin page
+
+[33mcommit ee59dc475670d06188c13294662fa9b4a6a56b6f[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Thu Mar 28 12:36:22 2024 +0000
+
+    Add category to model
+
+[33mcommit cfd787316f7dceb0d676af4834eb108b1feff21b[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Wed Mar 27 14:28:56 2024 +0000
+
+    Add products image model
+    
+    - add product model indexing
+
+[33mcommit 8a57764d9acc5fc4ce72abdbe69c8460463b409f[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Tue Mar 26 13:02:37 2024 +0000
+
+    Add size model to product
+
+[33mcommit e6e90484041228b5e7b12d3855e1a71e74933355[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Tue Mar 26 12:44:10 2024 +0000
+
+    Add color model to product
+
+[33mcommit 87cedfa35f0913210fc1f474cf8ba3f3f0bf4d12[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Tue Mar 26 12:16:57 2024 +0000
+
+    Add product model to store
+
+[33mcommit 2792c489d7bc18dd0980b96771c5074768880c9d[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Tue Mar 26 11:48:27 2024 +0000
+
+    Add store app
+
+[33mcommit a17b87574a80c95c32d3c184f1f53054092a74b5[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Sun Mar 10 19:14:08 2024 +0000
+
+    Fix adin is active bug
+
+[33mcommit 7aba9151eb74f90f7e876067a5a5ee70d071c4d8[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Sun Mar 10 17:55:48 2024 +0000
+
+    Add custom user manager
+
+[33mcommit 846c017220aeacbcc58e0d04dd846cf572d8a3f2[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Sun Mar 10 17:50:31 2024 +0000
+
+    Add custom user model
+
+[33mcommit 94b6bed3ca1e48ac20974c1baadf4c05b9b03888[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Fri Mar 8 14:11:33 2024 +0000
+
+    Update app configuration settings
+
+[33mcommit e7eb8b9e165e7fce1cedd412745a6d6899c1ed25[m
+Author: lawrence <lawcubegsm@gmail.com>
+Date:   Thu Mar 7 13:00:53 2024 +0000
+
+    initial commit
